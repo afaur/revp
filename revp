@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Ruby main program passing args
+bundle exec ruby ./lib/main.rb "$@"
+

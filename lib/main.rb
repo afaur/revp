@@ -19,14 +19,22 @@ opt_parser = OptionParser.new do |opts|
     options[:stop] = stop
   end
 
+  opts.on("-p", "--phrase in two seconds", "How far apart should each increment be") do |phrase|
+    options[:phrase] = phrase
+  end
+
 end
 
 opt_parser.parse!(ARGV)
 
+options[:start]   = options[:start]   || "2016 1 1 0 0 0"
+options[:stop]    = options[:stop]    || "2016 1 1 2 0 0"
+options[:phrase]  = options[:phrase]  || "in 2 seconds"
+
 review_range = ReviewRange.new(
   start: options[:start].split(' '),
   stop: options[:stop].split(' '),
-  increment_phrase: "in 2 seconds"
+  increment_phrase: options[:phrase]
 )
 
 template = File.open('./config/template.txt', 'r')
@@ -42,4 +50,32 @@ review_range.next { |slice_begin, slice_end|
     f.puts command.gsub('$1',slice_begin).gsub('$2',slice_end).gsub('"','')
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

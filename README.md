@@ -16,7 +16,7 @@ cd revp
 ### RVM
 
 ~~~
-rvm install jruby-2.1.5
+rvm install ruby-2.1.5
 ~~~
 
 ### rbenv
